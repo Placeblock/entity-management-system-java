@@ -50,9 +50,8 @@ publishing {
             version = project.version.toString()
             pom {
                 packaging = "jar"
-                name.set("CommandAPI-Velocity")
-                description.set(project.description)
-                url.set("https://github.com/Placeblock/CommandAPI")
+                name.set("EntityManagementSystem")
+                description.set("Library for managing entity identities")
                 licenses {
                     license {
                         name.set("GNU General Public License, Version 3")
@@ -65,20 +64,6 @@ publishing {
                         organization.set("Codelix")
                         organizationUrl.set("https://codelix.de/")
                     }
-                }
-                scm {
-                    url.set(
-                        "https://github.com/Placeblock/CommandAPI.git"
-                    )
-                    connection.set(
-                        "scm:git:git://github.com/Placeblock/CommandAPI.git"
-                    )
-                    developerConnection.set(
-                        "scm:git:git://github.com/Placeblock/CommandAPI.git"
-                    )
-                }
-                issueManagement {
-                    url.set("https://github.com/Placeblock/CommandAPI/issues")
                 }
             }
         }

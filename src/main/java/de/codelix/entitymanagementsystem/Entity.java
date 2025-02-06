@@ -13,4 +13,5 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class Entity {
     private final UUID uuid;
+    private final String name;
 }
