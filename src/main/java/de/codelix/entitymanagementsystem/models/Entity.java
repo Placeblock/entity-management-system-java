@@ -1,4 +1,4 @@
-package de.codelix.entitymanagementsystem;
+package de.codelix.entitymanagementsystem.models;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
