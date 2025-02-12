@@ -1,2 +1,2 @@
-rootProject.name = "EntityManagementSystem"
+rootProject.name = "entity-management-system"
 
