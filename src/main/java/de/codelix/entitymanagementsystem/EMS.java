@@ -22,14 +22,15 @@ public class EMS {
     private static final ObjectWriter ow = new ObjectMapper().writer();
     private static final String ROOT;
     static {
-        String host = System.getenv("HOST");
-        String port = System.getenv("PORT");
+        String host = System.getenv("API_HOST");
+        String port = System.getenv("API_PORT");
         ROOT = String.format("http://%s:%s/", host, port);
     }
 
     public static void main(String[] args) {
         val ems = new EMS();
-        ems.getEntity(1).thenAccept(System.out::println).join();
+        ems.getEntities()
+                .thenAccept(System.out::println).join();
     }
 
     public CompletableFuture<Entity> createEntity(String name) {

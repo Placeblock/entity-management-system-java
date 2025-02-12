@@ -18,8 +18,13 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.36")
     testCompileOnly("org.projectlombok:lombok:1.18.36")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.36")
+
+    // JSON
     implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
     implementation("com.fasterxml.jackson.core:jackson-core:2.18.2")
+
+    // ZeroMQ
+    implementation("org.zeromq:jeromq:0.6.0")
 }
 
 
@@ -32,7 +37,7 @@ java {
 tasks {
     compileJava {
         options.encoding = Charsets.UTF_8.name() // We want UTF-8 for everything
-        options.release.set(17)
+        options.release.set(23)
     }
     processResources {
         filteringCharset = Charsets.UTF_8.name() // We want UTF-8 for everything
