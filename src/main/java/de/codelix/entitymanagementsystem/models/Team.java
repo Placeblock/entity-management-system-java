@@ -1,12 +1,22 @@
 package de.codelix.entitymanagementsystem.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Team {
-    private final int id;
-    private final String name;
-    private final float hue;
+    private Integer id;
+    private String name;
+    private Float hue;
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", hue=" + hue +
+                '}';
+    }
 }

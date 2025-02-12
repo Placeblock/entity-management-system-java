@@ -1,17 +1,24 @@
 package de.codelix.entitymanagementsystem.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-import java.util.UUID;
+import lombok.*;
 
 /**
  * The identity of a single person. Multiple accounts of different
  * Applications may be linked to one entity and requested if necessary.
  */
 @Getter
-@RequiredArgsConstructor
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Entity {
-    private final UUID uuid;
-    private final String name;
+    private Integer id;
+    private String name;
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,13 +1,24 @@
 package de.codelix.entitymanagementsystem.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberInvite {
-    private final int id;
-    private final int invitedId;
-    private final int inviterId;
-    private final int teamId;
+    private int id;
+    private int invitedId;
+    private int inviterId;
+    private int teamId;
+
+    @Override
+    public String toString() {
+        return "MemberInvite{" +
+                "id=" + id +
+                ", invitedId=" + invitedId +
+                ", inviterId=" + inviterId +
+                ", teamId=" + teamId +
+                '}';
+    }
 }

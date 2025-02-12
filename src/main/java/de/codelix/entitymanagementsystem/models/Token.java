@@ -1,11 +1,20 @@
 package de.codelix.entitymanagementsystem.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Token {
-    private final int entityID;
-    private final String pin;
+    private int entityID;
+    private String pin;
+
+    @Override
+    public String toString() {
+        return "Token{" +
+                "entityID=" + entityID +
+                ", pin='" + pin + '\'' +
+                '}';
+    }
 }
