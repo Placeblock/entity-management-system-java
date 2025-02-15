@@ -22,6 +22,9 @@ public abstract class EMSListener {
     }
 
     public EMSListener() {
+    }
+
+    public void listen() {
         try (ZContext context = new ZContext()) {
             // Socket to talk to clients
             ZMQ.Socket socket = context.createSocket(SocketType.SUB);

@@ -4,13 +4,13 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberInvite {
     private int id;
     private int invitedId;
     private int inviterId;
-    private int teamId;
 
     @Override
     public String toString() {
@@ -18,7 +18,6 @@ public class MemberInvite {
                 "id=" + id +
                 ", invitedId=" + invitedId +
                 ", inviterId=" + inviterId +
-                ", teamId=" + teamId +
                 '}';
     }
 }
