@@ -1,4 +1,4 @@
-package de.codelix.entitymanagementsystem.realtime;
+package de.codelix.entitymanagementsystem.dto;
 
 import de.codelix.entitymanagementsystem.models.Member;
 import de.codelix.entitymanagementsystem.models.Team;

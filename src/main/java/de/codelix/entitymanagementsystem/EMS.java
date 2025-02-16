@@ -3,7 +3,9 @@ package de.codelix.entitymanagementsystem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import de.codelix.entitymanagementsystem.dto.CreateTeamDto;
+import de.codelix.entitymanagementsystem.dto.TeamCreateData;
 import de.codelix.entitymanagementsystem.http.JsonBodyHandler;
 import de.codelix.entitymanagementsystem.http.Response;
 import de.codelix.entitymanagementsystem.models.*;
@@ -19,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class EMS {
     private static final HttpClient client = HttpClient.newHttpClient();
-    private static final ObjectWriter ow = new ObjectMapper().writer();
+    private static final ObjectWriter ow = new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE).writer();
     private static final String ROOT;
     static {
         String host = System.getenv("API_HOST");
@@ -155,15 +157,16 @@ public class EMS {
                 .thenApply(HttpResponse::body);
     }
 
-    public CompletableFuture<Team> createTeam(String name, float hue, int entityId) {
+    public CompletableFuture<TeamCreateData> createTeam(String name, float hue, int entityId) {
         try {
             CreateTeamDto createTeamDto = new CreateTeamDto(name, hue, entityId);
             String params = ow.writeValueAsString(createTeamDto);
+            System.out.println(params);
             HttpRequest build = HttpRequest.newBuilder()
-                    .uri(URI.create(ROOT + "entities"))
+                    .uri(URI.create(ROOT + "teams"))
                     .POST(HttpRequest.BodyPublishers.ofString(params))
                     .build();
-            return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<Team>>() {}))
+            return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<TeamCreateData>>() {}))
                     .thenApply(HttpResponse::body);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -172,6 +175,12 @@ public class EMS {
 
     public CompletableFuture<Team> getTeam(int teamId) {
         HttpRequest build = HttpRequest.newBuilder().uri(URI.create(ROOT + "teams/" + teamId)).build();
+        return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<Team>>() {}))
+                .thenApply(HttpResponse::body);
+    }
+
+    public CompletableFuture<Team> getTeamByEntityId(int entityId) {
+        HttpRequest build = HttpRequest.newBuilder().uri(URI.create(ROOT + "entities/" + entityId + "/team")).build();
         return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<Team>>() {}))
                 .thenApply(HttpResponse::body);
     }
