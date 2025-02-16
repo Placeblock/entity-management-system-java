@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Token {
-    private int entityID;
+    private Integer entityID;
     private String pin;
 
     @Override

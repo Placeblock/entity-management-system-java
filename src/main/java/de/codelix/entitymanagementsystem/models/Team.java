@@ -1,11 +1,15 @@
 package de.codelix.entitymanagementsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Team {
     private Integer id;
     private String name;

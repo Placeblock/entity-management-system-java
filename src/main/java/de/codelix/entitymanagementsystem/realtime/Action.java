@@ -16,6 +16,9 @@ import lombok.Setter;
         @JsonSubTypes.Type(value = EntityRenameAction.class, name = "entity.rename"),
         @JsonSubTypes.Type(value = MemberCreateAction.class, name = "member.create"),
         @JsonSubTypes.Type(value = MemberRemoveAction.class, name = "member.remove"),
+        @JsonSubTypes.Type(value = MemberInviteAction.class, name = "member.invite"),
+        @JsonSubTypes.Type(value = InviteAcceptAction.class, name = "member.invite.accept"),
+        @JsonSubTypes.Type(value = InviteDeclineAction.class, name = "member.invite.decline"),
         @JsonSubTypes.Type(value = TeamCreateAction.class, name = "team.create"),
         @JsonSubTypes.Type(value = TeamRenameAction.class, name = "team.rename"),
         @JsonSubTypes.Type(value = TeamRecolorAction.class, name = "team.recolor")

@@ -97,6 +97,12 @@ public class EMS {
                 .thenApply(HttpResponse::body);
     }
 
+    public CompletableFuture<MemberInvite> getInvitesByInviterName(int invitedId, String inviterName) {
+        HttpRequest build = HttpRequest.newBuilder().uri(URI.create(ROOT + "entities/" + invitedId + "/invites/" + inviterName)).build();
+        return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<MemberInvite>>() {}))
+                .thenApply(HttpResponse::body);
+    }
+
     public CompletableFuture<MemberInvite> createInvite(MemberInvite invite) {
         try {
             String params = ow.writeValueAsString(invite);
@@ -161,7 +167,6 @@ public class EMS {
         try {
             CreateTeamDto createTeamDto = new CreateTeamDto(name, hue, entityId);
             String params = ow.writeValueAsString(createTeamDto);
-            System.out.println(params);
             HttpRequest build = HttpRequest.newBuilder()
                     .uri(URI.create(ROOT + "teams"))
                     .POST(HttpRequest.BodyPublishers.ofString(params))

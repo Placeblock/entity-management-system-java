@@ -1,5 +1,6 @@
 package de.codelix.entitymanagementsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @Getter
@@ -7,10 +8,13 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberInvite {
-    private int id;
-    private int invitedId;
-    private int inviterId;
+    private Integer id;
+    private Integer inviterId;
+    private Integer invitedId;
+    private Member inviter;
+    private Entity invited;
 
     @Override
     public String toString() {
@@ -18,6 +22,8 @@ public class MemberInvite {
                 "id=" + id +
                 ", invitedId=" + invitedId +
                 ", inviterId=" + inviterId +
+                ", invited=" + invited +
+                ", inviter=" + inviter +
                 '}';
     }
 }
