@@ -232,12 +232,12 @@ public class EMS {
                 .thenApply(HttpResponse::body);
     }
 
-    public CompletableFuture<Void> sendMessage(int memberId, int teamId, String message) {
+    public CompletableFuture<Void> sendMessage(int memberId, String message) {
         try {
-            TeamMessage teamMsg = TeamMessage.builder().memberId(memberId).message(message).build();
+            TeamMessage teamMsg = TeamMessage.builder().message(message).build();
             String params = ow.writeValueAsString(teamMsg);
             HttpRequest build = HttpRequest.newBuilder()
-                    .uri(URI.create(ROOT + "teams/" + teamId + "/message"))
+                    .uri(URI.create(ROOT + "members/" + memberId + "/message"))
                     .PUT(HttpRequest.BodyPublishers.ofString(params))
                     .build();
             return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<Void>>() {}))

@@ -12,9 +12,7 @@ import lombok.*;
 public class TeamMessage {
     private int id;
     private int memberId;
-    private int teamId;
     private Member member;
-    private Team team;
     private String message;
 
     @Override
@@ -22,9 +20,7 @@ public class TeamMessage {
         return "TeamMessage{" +
                 "id=" + id +
                 ", memberId=" + memberId +
-                ", teamId=" + teamId +
                 ", member=" + member +
-                ", team=" + team +
                 ", message='" + message + '\'' +
                 '}';
     }
