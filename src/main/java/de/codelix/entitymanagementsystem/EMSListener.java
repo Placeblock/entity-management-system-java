@@ -73,6 +73,9 @@ public abstract class EMSListener {
                     case TeamRecolorAction a:
                         this.onTeamRecolor(a);
                         break;
+                    case TeamMessageAction a:
+                        this.onTeamMessage(a);
+                        break;
                     default:
                         throw new IllegalStateException("Unexpected Action type: " + action);
                 }
@@ -89,6 +92,6 @@ public abstract class EMSListener {
     protected abstract void onTeamCreate(TeamCreateAction action);
     protected abstract void onTeamRename(TeamRenameAction action);
     protected abstract void onTeamRecolor(TeamRecolorAction action);
-
+    protected abstract void onTeamMessage(TeamMessageAction action);
 
 }

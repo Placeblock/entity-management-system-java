@@ -21,7 +21,8 @@ import lombok.Setter;
         @JsonSubTypes.Type(value = InviteDeclineAction.class, name = "member.invite.decline"),
         @JsonSubTypes.Type(value = TeamCreateAction.class, name = "team.create"),
         @JsonSubTypes.Type(value = TeamRenameAction.class, name = "team.rename"),
-        @JsonSubTypes.Type(value = TeamRecolorAction.class, name = "team.recolor")
+        @JsonSubTypes.Type(value = TeamRecolorAction.class, name = "team.recolor"),
+        @JsonSubTypes.Type(value = TeamMessageAction.class, name = "team.message")
 })
 public abstract class Action {
     private String type;
