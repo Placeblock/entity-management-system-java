@@ -238,7 +238,7 @@ public class EMS {
             String params = ow.writeValueAsString(teamMsg);
             HttpRequest build = HttpRequest.newBuilder()
                     .uri(URI.create(ROOT + "members/" + memberId + "/message"))
-                    .PUT(HttpRequest.BodyPublishers.ofString(params))
+                    .POST(HttpRequest.BodyPublishers.ofString(params))
                     .build();
             return client.sendAsync(build, new JsonBodyHandler<>(new TypeReference<Response<Void>>() {}))
                     .thenApply(HttpResponse::body);
